@@ -1,0 +1,220 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="Report.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" class="logo">
+                        <img src="Images/Chrisian-New Logo.png">
+                        <span class="nav-item">Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="Dashboard()">
+                        <i class="fas fa-menorah"></i>
+                        <span class="nav-item">Dashboard</span>
+                    </a>
+                </li>
+                <!--<li>
+                    <a href="#" onclick="Report()">
+                        <i class="fas fa-comment"></i>
+                        <span class="nav-item">Message Board</span>
+                    </a>
+                </li>-->
+                <li>
+                    <a href="#">
+                        <i class="fas fa-database"></i>
+                        <span class="nav-item">Report</span>
+                    </a>
+                    <!--</li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-chart-bar"></i>
+                            <span class="nav-item">Attendance</span>
+                        </a>
+                    </li>-->
+                    <!--<li>
+                        <a href="#">
+                            <i class="fas fa-cog"></i>
+                            <span class="nav-item">Setting</span>
+                        </a>
+                    </li>-->
+
+                <li>
+                    <a href="#" class="logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="nav-item">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <section class="main">
+            <div class="main-top">
+                <h1>Dashboard</h1>
+                <i class="fas fa-user-cog"></i>
+            </div>
+            <div class="users">
+                <div class="card">
+                    <img src="Images/HR.png">
+                    <h4>HR Department</h4>
+                    <p>5 Employee</p>
+
+                    <button onclick="showList(1)">List</button>
+                </div>
+                <div class="card">
+                    <img src="Images/Design.png">
+                    <h4>Design Department</h4>
+                    <p>2 Employee</p>
+
+                    <button onclick="showList(2)">List</button>
+                </div>
+                <div class="card">
+                    <img src="Images/IT.png">
+                    <h4>IT Department</h4>
+                    <p>4 Employee</p>
+
+                    <button onclick="showList(3)">List</button>
+                </div>
+                <div class="card">
+                    <img src="Images/accounting.png">
+                    <h4>Accounting Department</h4>
+                    <p>5 Employee</p>
+
+                    <button onclick="showList(4)">List</button>
+                </div>
+            </div>
+
+            <section class="Employee">
+                <div class="Employee-list">
+                    <h1>Employee List</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Depart</th>
+                                <th>Date of Message</th>
+                                <th>Title of Message</th>
+                                <th>Message</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!-- <tr >
+                              <td>05</td>
+                              <td>Salina</td>
+                              <td>Coding</td>
+                              <td>03-24-22</td>
+                              <td>9:00AM</td>
+                              <td>4:00PM</td>
+                              <td><button>View</button></td>
+                            </tr>
+                            <tr >
+                              <td>06</td>
+                              <td>Tara Smith</td>
+                              <td>Testing</td>
+                              <td>03-24-22</td>
+                              <td>9:00AM</td>
+                              <td>4:00PM</td>
+                              <td><button>View</button></td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </div>
+    <script>
+
+       const employees = [
+  { id: 1, name: "John Doe", department: "HR", date: "2024-01-15", TM: "Employee of the Month", details: "Recognized for outstanding contribution to employee engagement and HR initiatives." },
+  { id: 2, name: "Jane Smith", department: "IT", date: "2024-02-10", TM: "System Upgrade Lead", details: "Successfully led the system migration project improving IT efficiency by 30%." },
+  { id: 3, name: "Mike Johnson", department: "Accounting", date: "2024-03-25", TM: "Budget Analyst", details: "Prepared detailed quarterly reports ensuring 100% compliance with audit requirements." },
+  { id: 4, name: "Emma Brown", department: "IT", date: "2024-04-10", TM: "Intern of the Month", details: "Developed a prototype dashboard that improved internal bug tracking processes." },
+  { id: 5, name: "Liam Davis", department: "Accounting", date: "2024-05-12", TM: "Senior Accountant", details: "Streamlined invoice validation saving the department 15 hours weekly." },
+  { id: 6, name: "Sophia Miller", department: "Design", date: "2024-06-05", TM: "Creative Designer", details: "Redesigned corporate branding materials enhancing visual consistency." },
+  { id: 7, name: "Olivia Garcia", department: "HR", date: "2024-07-02", TM: "Training Coordinator", details: "Organized over 10 successful onboarding sessions for new hires." },
+  { id: 8, name: "Noah Martinez", department: "Design", date: "2024-08-11", TM: "UX Researcher", details: "Conducted usability testing that improved app satisfaction rates by 20%." },
+  { id: 9, name: "Ava Rodriguez", department: "HR", date: "2024-09-21", TM: "Policy Specialist", details: "Revised internal HR policies improving staff retention by 12%." },
+  { id: 10, name: "William Hernandez", department: "IT", date: "2024-10-01", TM: "Network Administrator", details: "Maintained 99.9% network uptime across all company branches." },
+  { id: 11, name: "Isabella Lopez", department: "Accounting", date: "2024-10-12", TM: "Junior Auditor", details: "Assisted with audit documentation and reconciled multiple discrepancies." },
+  { id: 12, name: "James Gonzalez", department: "HR", date: "2024-10-25", TM: "Recruitment Officer", details: "Filled 25 key positions in record time with high-quality candidates." },
+  { id: 13, name: "Mia Perez", department: "IT", date: "2024-11-01", TM: "Software Intern", details: "Contributed to backend API testing and performance improvements." },
+  { id: 14, name: "Benjamin Thompson", department: "HR", date: "2024-11-03", TM: "Employee Relations Manager", details: "Mediated internal conflicts, improving team collaboration scores by 15%." },
+  { id: 15, name: "Charlotte White", department: "Accounting", date: "2024-11-05", TM: "Financial Planner", details: "Developed financial forecasting models for upcoming fiscal years." },
+  { id: 16, name: "Daniel Evans", department: "Accounting", date: "2024-11-10", TM: "Audit Supervisor", details: "Led the annual audit with zero compliance issues reported." }
+];
+
+        function logout() {
+            // Optional: show a confirmation
+            const confirmLogout = confirm("Are you sure you want to log out?");
+            if (confirmLogout) {
+                // Redirect back to login page
+                window.location.href = "Login.html"; // Change this to your login page filename
+            }
+        }
+
+        function Dashboard() {
+
+                window.location.href = "dashboard.html"; // Change this to your login page filename
+            }
+
+        function Report() {
+
+            window.location.href = "Report.html"; // Change this to your login page filename
+        }
+
+        function showList(type) {
+            const tableBody = document.querySelector(".Employee-list tbody");
+            tableBody.innerHTML = ""; // clear old rows
+
+            let filteredEmployees;
+
+            if (type === 1) {
+
+                filteredEmployees = employees.filter(emp => emp.department === "HR").slice(0, 5);
+            } else if (type === 2) {
+
+                filteredEmployees = employees.filter(emp => emp.department === "Design").slice(0, 2);
+            }
+            else if (type === 3) {
+
+                filteredEmployees = employees.filter(emp => emp.department === "IT").slice(0, 4);
+            }
+            else if (type === 4) {
+
+                filteredEmployees = employees.filter(emp => emp.department === "Accounting").slice(0, 5);
+            }
+
+            // Populate table
+            filteredEmployees.forEach(emp => {
+                const row = `
+              <tr>
+                <td>${emp.id}</td>
+                <td>${emp.name}</td>
+                <td>${emp.department}</td>
+                <td>${emp.date}</td>
+                <td>${emp.TM}</td>
+                <td>${emp.details}</td>
+                <td><button onclick="alert('Viewing details for ${emp.name}')">View</button></td>
+              </tr>
+            `;
+                tableBody.innerHTML += row;
+            });
+        }
+    </script>
+</body>
+</html>
+    </span>
