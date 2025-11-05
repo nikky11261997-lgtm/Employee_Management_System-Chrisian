@@ -1,0 +1,64 @@
+﻿
+    <!DOCTYPE html>
+    <!-- Created By CodingNepal -->
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login Form</title>
+        <link rel="stylesheet" href="Login.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    </head>
+    <body>
+        <div class="center">
+            <div class="header">
+                <div class="logo-container">
+                    <img src="Images/Chrisian-New Logo.png" alt="Logo" class="logo">
+                    <p class="logo-text">Login Form</p>
+                </div>
+            </div>
+
+            <form>
+                <input id="username" type="text" placeholder="Email or Username">
+                <i class="far fa-envelope"></i>
+                <input id="pswrd" type="password" placeholder="Password">
+                <i class="fas fa-lock" onclick="show()"></i>
+                <input type="submit" value="Sign in">
+                <a href="#">Forgot Password?</a>
+            </form>
+        </div>
+        <script>
+        function show() {
+            var pswrd = document.getElementById('pswrd');
+            var icon = document.querySelector('.fas');
+            if (pswrd.type === "password") {
+                pswrd.type = "text";
+                pswrd.style.marginTop = "20px";
+                icon.style.color = "#7f2092";
+            } else {
+                pswrd.type = "password";
+                icon.style.color = "grey";
+            }
+        }
+
+          function validateLogin() {
+      // Get input values
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('pswrd').value.trim();
+
+      // Check if fields are empty
+      if (username === "" || password === "") {
+        alert("Error: Username and password cannot be empty!");
+        return false;
+      }
+
+      // Check credentials
+      if (username === "admin" && password === "1234") {
+        // Redirect to another page
+        window.location.href = "dashboard.html"; // change this to your desired page
+      } else {
+        alert("Invalid username or password!");
+      }
+    }
+        </script>
+    </body>
+</html>
